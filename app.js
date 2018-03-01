@@ -1,9 +1,8 @@
 console.log('Starting app.js');
 
 const fs = require('fs');
-// const _ = require('lodash'); // Need to 'npm install lodash --save' in project folder
-// 'npm install nodemon -g', then going forward to run app 'nodemon app.js'
-// const yargs = require('yargs');// 'npm install yargs@4.7.1 --save' in project folder (old version to ensure it works)
+const _ = require('lodash'); // Need to 'npm install lodash --save' in project folder
+const yargs = require('yargs');// 'npm install yargs@4.7.1 --save' in project folder (old version to ensure it works)
 const notes = require('./notes.js');
 
 const argv = yargs.argv;
