@@ -9,20 +9,27 @@ var command = argv._[0];
 if (command === 'add') {
   var note = notes.addNote(argv.title, argv.body);
   if (note) {
-    console.log('That note already exists!');
+    console.log('Added note');
+    notes.logNote(note);
   } else {
-    console.log(`Added the ${note.title} note!`);
-    console.log('--');
-    console.log(note.body);
+    console.log('That note already exists!');
   }
 } else if (command === 'list') {
   notes.getAll();
 } else if (command === 'read') {
-  notes.readNote(argv.title);
+  var note = notes.readNote(argv.title);
+
+  if (note) {
+    notes.logNote(note);
+  } else {
+    console.log(`That note doesn't exists!`);
+  }
 } else if (command === 'remove') {
   var noteRemoved = notes.removeNote(argv.title);
   var message = noteRemoved ? `${argv.title} removed.` : 'Note not found';
   console.log(message);
+} else if (command === 'Spinal Tap') {
+  console.log('This one goes to eleven');
 } else {
   console.log('Command not recognized');
 }
