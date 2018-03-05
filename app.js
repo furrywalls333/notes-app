@@ -1,9 +1,35 @@
 const fs = require('fs');
-const _ = require('lodash'); // Need to 'npm install lodash --save' in project folder
-const yargs = require('yargs');// 'npm install yargs@4.7.1 --save' in project folder (old version to ensure it works)
+const _ = require('lodash');
+const yargs = require('yargs');
+
 const notes = require('./notes.js');
 
-const argv = yargs.argv;
+const titleOptions = {
+  describe: 'Title of Note',
+  demand: true,
+  alias: 't'
+};
+
+const bodyOptions = {
+  describe: 'Body of the note',
+  demand: true,
+  alias: 'b'
+};
+
+const argv = yargs
+  .command('add', 'Add new note', {
+    title: titleOptions,
+    body: bodyOptions
+  })
+  .command('list', 'List all notes')
+  .command('read', 'Reads a note', {
+    title: titleOptions
+  })
+  .command('remove', 'Removes a note', {
+    title: titleOptions
+  })
+  .help()
+  .argv;
 var command = argv._[0];
 
 if (command === 'add') {
